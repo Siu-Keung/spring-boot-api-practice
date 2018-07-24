@@ -29,12 +29,12 @@ public class AppController {
         return this.employeeService.getEmployeeById(employeeId);
     }
 
-    @PutMapping("/employees")
+    @PostMapping("/employees")
     public String addEmployee(Employee newEmployee){
-        if(this.allEmployees.indexOf(newEmployee) != -1)
+        if(this.employeeService.addEmployee(newEmployee))
+            return "succeeded";
+        else
             return "failed";
-        this.allEmployees.add(newEmployee);
-        return "succeeded";
     }
 
     @PostMapping("/employees/{employeeId}")

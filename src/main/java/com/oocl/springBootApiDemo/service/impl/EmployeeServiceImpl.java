@@ -33,7 +33,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Boolean addEmployee(Employee employee) {
-        return null;
+        if(this.allEmployees.indexOf(employee) != -1)
+            return false;
+        this.allEmployees.add(employee);
+        return true;
     }
 
     @Override
