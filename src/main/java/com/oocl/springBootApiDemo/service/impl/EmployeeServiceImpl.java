@@ -41,7 +41,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Boolean updateEmployee(Employee employee) {
-        return null;
+        int index = this.allEmployees.indexOf(employee);
+        if(-1 == index)
+            return false;
+        Employee targetEmployee = this.allEmployees.get(index);
+        targetEmployee.setName(employee.getName());
+        targetEmployee.setAge(employee.getAge());
+        targetEmployee.setGender(employee.getGender());
+        return true;
     }
 
     @Override

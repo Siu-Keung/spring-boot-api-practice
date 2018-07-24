@@ -37,16 +37,12 @@ public class AppController {
             return "failed";
     }
 
-    @PostMapping("/employees/{employeeId}")
+    @PutMapping("/employees/{employeeId}")
     public String updateEmployee(Employee newEmployee){
-        int index = this.allEmployees.indexOf(newEmployee);
-        if(index == -1)
+        if(this.employeeService.updateEmployee(newEmployee))
+            return "succeeded";
+        else
             return "failed";
-        Employee targetEmployee = this.allEmployees.get(index);
-        targetEmployee.setName(newEmployee.getName());
-        targetEmployee.setAge(newEmployee.getAge());
-        targetEmployee.setGender(newEmployee.getGender());
-        return "succeeded";
     }
 
     @DeleteMapping("/employees/{employeeId}")
