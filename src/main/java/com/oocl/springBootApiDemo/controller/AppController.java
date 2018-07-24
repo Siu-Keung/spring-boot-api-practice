@@ -38,7 +38,17 @@ public class AppController {
         return "succeeded";
     }
 
-
+    @PostMapping("/updateEmployee")
+    public String updateEmployee(Employee newEmployee){
+        int index = this.allEmployees.indexOf(newEmployee);
+        if(index == -1)
+            return "failed";
+        Employee targetEmployee = this.allEmployees.get(index);
+        targetEmployee.setName(newEmployee.getName());
+        targetEmployee.setAge(newEmployee.getAge());
+        targetEmployee.setGender(newEmployee.getGender());
+        return "succeeded";
+    }
 
 
 }
