@@ -1,5 +1,9 @@
 package com.oocl.springBootApiDemo.entity;
 
+import org.springframework.beans.factory.annotation.Required;
+
+import java.util.Objects;
+
 /**
  * @author Dylan Wei
  * @date 2018-07-24 12:41
@@ -64,4 +68,13 @@ public class Employee {
         this.age = age;
         this.gender = gender;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return Objects.equals(getId(), employee.getId());
+    }
+
 }

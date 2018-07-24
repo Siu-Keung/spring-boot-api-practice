@@ -4,9 +4,11 @@ import com.oocl.springBootApiDemo.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @author Dylan Wei
@@ -27,5 +29,16 @@ public class AppController {
     public Employee getEmployeeById(@PathVariable Integer employeeId){
         return this.allEmployees.stream().filter(employee -> employee.getId().equals(employeeId)).findFirst().get();
     }
+
+    @PostMapping("/addEmployee")
+    public String addEmployee(Employee newEmployee){
+        if(this.allEmployees.indexOf(newEmployee) != -1)
+            return "failed";
+        this.allEmployees.add(newEmployee);
+        return "succeeded";
+    }
+
+
+
 
 }
