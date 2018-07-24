@@ -26,7 +26,7 @@ public class AppController {
 
     @GetMapping("/employees/{employeeId}")
     public Employee getEmployeeById(@PathVariable Integer employeeId){
-        return this.allEmployees.stream().filter(employee -> employee.getId().equals(employeeId)).findFirst().get();
+        return this.employeeService.getEmployeeById(employeeId);
     }
 
     @PutMapping("/employees")

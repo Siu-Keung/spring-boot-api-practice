@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Dylan Wei
@@ -23,7 +24,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee getEmployeeById(Integer id) {
-        return null;
+        Optional<Employee> optional = this.allEmployees.stream().filter(item -> item.getId().equals(id)).findFirst();
+        if(optional.isPresent())
+            return optional.get();
+        else
+            return null;
     }
 
     @Override
