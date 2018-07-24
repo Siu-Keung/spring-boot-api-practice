@@ -5,26 +5,27 @@ package com.oocl.springBootApiDemo.entity;
  * @date 2018-07-24 12:41
  */
 public class Employee {
-    private String id;
+    private Integer id;
     private String name;
     private Integer age;
     private String gender;
 
+
     @Override
     public String toString() {
         return "Employee{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 ", gender='" + gender + '\'' +
                 '}';
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -52,15 +53,15 @@ public class Employee {
         this.gender = gender;
     }
 
-    public Employee(String id, String name, Integer age, String gender) {
+    public Employee() {
+
+    }
+
+    public Employee(Integer id, String name, Integer age, String gender) {
 
         this.id = id;
         this.name = name;
         this.age = age;
         this.gender = gender;
-    }
-
-    public Employee() {
-
     }
 }
