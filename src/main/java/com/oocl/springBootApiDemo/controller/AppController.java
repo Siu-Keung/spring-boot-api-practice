@@ -1,6 +1,7 @@
 package com.oocl.springBootApiDemo.controller;
 
 import com.oocl.springBootApiDemo.entity.Employee;
+import com.oocl.springBootApiDemo.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,10 +16,12 @@ import java.util.UUID;
 public class AppController {
     @Autowired
     private List<Employee> allEmployees;
+    @Autowired
+    private EmployeeService employeeService;
 
     @GetMapping("/employees")
     public List<Employee> getAllEmployees(){
-        return this.allEmployees;
+        return this.employeeService.getAllEmployees();
     }
 
     @GetMapping("/employees/{employeeId}")

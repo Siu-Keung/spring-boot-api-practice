@@ -16,10 +16,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
     private List<Employee> allEmployees;
 
-
     @Override
     public List<Employee> getAllEmployees() {
-        return null;
+        return this.allEmployees;
     }
 
     @Override
