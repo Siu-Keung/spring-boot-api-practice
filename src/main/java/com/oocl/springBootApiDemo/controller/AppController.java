@@ -20,7 +20,7 @@ public class AppController {
     private List<Employee> allEmployees;
 
 
-    @GetMapping("/getAllEmployees")
+    @GetMapping("/employees")
     public List<Employee> getAllEmployees(){
         return this.allEmployees;
     }
