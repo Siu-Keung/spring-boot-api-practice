@@ -53,6 +53,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Boolean removeEmployee(Integer id) {
-        return null;
+        return this.allEmployees.remove(new Employee(id));
     }
 }

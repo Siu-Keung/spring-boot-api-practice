@@ -15,8 +15,6 @@ import java.util.UUID;
 @RestController
 public class AppController {
     @Autowired
-    private List<Employee> allEmployees;
-    @Autowired
     private EmployeeService employeeService;
 
     @GetMapping("/employees")
@@ -47,10 +45,7 @@ public class AppController {
 
     @DeleteMapping("/employees/{employeeId}")
     public String deleteEmployee(@PathVariable Integer employeeId){
-        Employee employee = new Employee();
-        employee.setId(employeeId);
-        boolean succeeded = this.allEmployees.remove(employee);
-        if(succeeded)
+        if(this.employeeService.removeEmployee(employeeId))
             return "succeeded";
         else
             return "failed";

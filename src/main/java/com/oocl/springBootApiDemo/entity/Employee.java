@@ -16,6 +16,10 @@ public class Employee {
     private String gender;
 
 
+    public Employee(Integer id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
