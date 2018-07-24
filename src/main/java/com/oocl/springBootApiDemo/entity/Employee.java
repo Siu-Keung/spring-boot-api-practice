@@ -1,6 +1,7 @@
 package com.oocl.springBootApiDemo.entity;
 
 import org.springframework.beans.factory.annotation.Required;
+import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 

@@ -2,10 +2,7 @@ package com.oocl.springBootApiDemo.controller;
 
 import com.oocl.springBootApiDemo.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -19,18 +16,17 @@ public class AppController {
     @Autowired
     private List<Employee> allEmployees;
 
-
     @GetMapping("/employees")
     public List<Employee> getAllEmployees(){
         return this.allEmployees;
     }
 
-    @GetMapping("/employeeInfo/{employeeId}")
+    @GetMapping("/employees/{employeeId}")
     public Employee getEmployeeById(@PathVariable Integer employeeId){
         return this.allEmployees.stream().filter(employee -> employee.getId().equals(employeeId)).findFirst().get();
     }
 
-    @PostMapping("/addEmployee")
+    @PutMapping("/employees")
     public String addEmployee(Employee newEmployee){
         if(this.allEmployees.indexOf(newEmployee) != -1)
             return "failed";
@@ -38,7 +34,7 @@ public class AppController {
         return "succeeded";
     }
 
-    @PostMapping("/updateEmployee")
+    @PostMapping("/employees/{employeeId}")
     public String updateEmployee(Employee newEmployee){
         int index = this.allEmployees.indexOf(newEmployee);
         if(index == -1)
@@ -50,7 +46,7 @@ public class AppController {
         return "succeeded";
     }
 
-    @PostMapping("/deleteEmployee/{employeeId}")
+    @DeleteMapping("/employees/{employeeId}")
     public String deleteEmployee(@PathVariable Integer employeeId){
         Employee employee = new Employee();
         employee.setId(employeeId);
