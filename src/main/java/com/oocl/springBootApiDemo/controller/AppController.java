@@ -50,5 +50,16 @@ public class AppController {
         return "succeeded";
     }
 
+    @PostMapping("/deleteEmployee/{employeeId}")
+    public String deleteEmployee(@PathVariable Integer employeeId){
+        Employee employee = new Employee();
+        employee.setId(employeeId);
+        boolean succeeded = this.allEmployees.remove(employee);
+        if(succeeded)
+            return "succeeded";
+        else
+            return "failed";
+    }
+
 
 }
